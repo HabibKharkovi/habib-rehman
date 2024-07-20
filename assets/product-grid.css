@@ -1,0 +1,108 @@
+.product_grid {
+    padding-top: 90px;
+    padding-bottom: 50px;
+}
+.container {
+    padding: 0 50px;
+    margin: 0 auto;
+    max-width: 2940px;
+}
+.product_grid-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.product_grid-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product_grid-title {
+    font-size: 36px;
+    line-height: 1.4;
+    color: #000000;
+    font-weight: 400;
+    margin: 0 0 30px;
+}
+.product_grid-item {
+    position: relative;
+}
+.product_grid-btn {
+    position: absolute;
+    width: 100%;
+    max-width: 22px;
+    height: 22px;
+    cursor: pointer;
+    transform: translate(-50% , -50%);
+}
+.product_grid-btn svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.product_grid-image-wrapper {
+    height: 100%;
+}
+.hide {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+.overlay {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0000005c;
+    z-index: 1;
+}
+.quick__atc-popup {
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    max-width: 311px;
+    width: 100%;
+}
+
+@media screen and (max-width:990px){
+    .product_grid {
+        padding-top: 70px;
+        padding-bottom: 35px;
+    }
+    .product_grid-title {
+        font-size: 28px;
+    }
+    .product_grid-row {
+        gap: 10px;
+    }
+}
+@media screen and (max-width:767px){
+    .product_grid {
+        padding-top: 40px;
+        padding-bottom: 24px;
+    }
+    .product_grid .container {
+        padding: 0 17px;
+    }
+    .product_grid-title {
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .product_grid-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+    }
+    .product_grid-btn {
+        max-width: 16px;
+        height: 16px;
+    }
+}

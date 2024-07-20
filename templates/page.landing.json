@@ -1,18 +1,27 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
-    "sections": {
-      "hero_banner_bFMULh": {
-        "type": "hero-banner",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/Asset_4_3x-100_2160x_0d3a78fb-29a2-4e91-86da-2ce84ae12582.webp",
-          "title": "The Gift Guide",
-          "description": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.<\/p>",
-          "mob_description": "<p>Discover Joy: Your Ultimate Holiday Gift Destination.<br\/><\/p>",
-          "btn_text": "Shop Now",
-          "sub_title": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL",
-          "mob_sub_title": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
-        }
-      },
-      "product_grid": {
+  "sections": {
+    "hero_banner_bFMULh": {
+      "type": "hero-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/woman-in-the-city_925x_fa6b306e-cdb3-4593-94a7-91ba71d3e059.jpg",
+        "title": "The Gift Guide",
+        "description": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.<\/p>",
+        "mob_description": "<p>Discover Joy: Your Ultimate Holiday Gift Destination.<br\/><\/p>",
+        "btn_text": "Shop Now",
+        "sub_title": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL",
+        "mob_sub_title": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
+      }
+    },
+    "product_grid": {
       "type": "product-grid",
       "blocks": {
         "product_PDKGMP": {
@@ -88,9 +97,9 @@
         "title": "Tisso vison in the wild"
       }
     }
-    },
-    "order": [
-      "hero_banner_bFMULh",
-      "product_grid"
-    ]
-  }
+  },
+  "order": [
+    "hero_banner_bFMULh",
+    "product_grid"
+  ]
+}

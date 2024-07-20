@@ -1,0 +1,8 @@
+<style>
+  {%- for colorSwatch in shop.metaobjects.color_swatch.values -%}
+    .{{ colorSwatch.name | downcase | handleize }}{
+        background: {{ colorSwatch.value }};
+    }
+
+  {%- endfor -%}
+</style>

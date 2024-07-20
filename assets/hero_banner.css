@@ -1,0 +1,134 @@
+.hero_banner {
+    position: relative;
+    height: 100vh; 
+}
+.hero_banner-image {
+    height: 100%;
+}
+.hero_banner_content-area {
+    position: absolute;
+    max-width: 560px;
+    background-color: #fff; 
+    padding: 35px 20px 85px 67px;
+    bottom: 0;
+}
+.hero_banner-arrow-svg {
+    max-width: 26px;
+    flex: 26px;
+} 
+.hero_banner-description.mob_description {
+    display: none;
+}
+.hero_banner-btn-svg-wrap.cus_button {
+    padding: 15px 25px 15px 55px;
+}
+.hero_banner-btn-text.cus_btn-text {
+    margin: 0 25px 0 0;
+}
+.hero_banner img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.hero_banner-title {
+    margin: 0 0 50px;
+    font-size: 70px;
+    line-height: 1;
+    letter-spacing: 0px; 
+    font-weight: 500;
+    color: #000;
+}
+.hero_banner-description {
+    font-size: 20px;
+    color: #000;
+    line-height: 1.4;
+    letter-spacing: 0px;
+    margin: 0 0 50px;
+}
+.hero_banner-description p{
+    margin: 0 0;
+}
+.hero_banner-sub-title {
+    display: block;
+    line-height: 1;
+    text-align: center;
+    background-color: #f5f5f5;
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+    text-transform: uppercase;
+    padding: 9px; 
+    letter-spacing: 0; 
+}
+.hero_banner .mob_button {
+    display: none;
+} 
+.hero_banner-sub-title.mob_sub-title {
+    display: none;
+}
+@media screen and (max-width:990px) {
+    .hero_banner_content-area { 
+        padding: 35px 15px 85px 50px;
+    }
+    .hero_banner-title {
+        margin: 0 0 35px;
+        font-size: 60px;
+    }
+    .hero_banner-description {
+        margin: 0 0 35px;
+    }    
+}
+@media screen and (max-width:767px) {
+    .hero_banner {
+        max-height: 455px; 
+    } 
+    .hero_banner-description.mob_description {
+        display: block;
+        font-size: 16px;
+        line-height: 1.3;
+        margin: 0 0; 
+    } 
+    .hero_banner-description.des_description {
+        display: none;
+    } 
+    .hero_banner_content-area { 
+        bottom: unset;
+        max-width: 100%; 
+        width: 100%;
+        top: 0; 
+        padding: 49px 16px 12px; 
+        text-align: center;
+    }
+    .hero_banner-title {
+        margin: 0 0 24px;
+        font-size: 30px;
+    } 
+    .hero_banner-btn-svg-wrap.des_btn.cus_button {
+        display: none;
+    } 
+   .hero_banner .mob_button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 70px;  
+    }  
+    .hero_banner-sub-title {
+        display: none;
+    }
+    .hero_banner-btn-text.cus_btn-text {
+        margin: 0 10px 0 0;
+    } 
+    .hero_banner-btn-svg-wrap.cus_button {
+        padding: 12.5px 25px 12.5px 51px;
+    } 
+    .hero_banner-sub-title.mob_sub-title {
+        display: block; 
+        font-size: 14px;
+        padding: 10px; 
+    }
+}

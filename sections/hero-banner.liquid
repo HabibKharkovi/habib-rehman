@@ -1,0 +1,108 @@
+{{ 'hero_banner.css' | asset_url | stylesheet_tag }}
+<div class="hero_banner">
+  {% if section.settings.image != blank %}
+    <div class="hero_banner-image">
+      <img src="{{ section.settings.image | image_url: width: '4000'}}" alt="">
+    </div>
+  {% else %}
+    {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+  {% endif %}
+  <div class="hero_banner-wrapper">
+    <div class="hero_banner_content-area">
+      {% if section.settings.title != blank %}
+        <h1 class="hero_banner-title">{{ section.settings.title }}</h1>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="hero_banner-description des_description">{{ section.settings.description }}</div>
+      {% endif %}
+      {% if section.settings.mob_description != blank %}
+        <div class="hero_banner-description mob_description">{{ section.settings.mob_description }}</div>
+      {% endif %}
+      {% if section.settings.btn_text != blank %} 
+        <div class="hero_banner-btn-svg-wrap des_btn cus_button">
+          <h3 class="hero_banner-btn-text cus_btn-text">{{ section.settings.btn_text }}</h3>
+          <div class="hero_banner-arrow-svg arrow-svg">
+            <svg
+              width="28"
+              height="13"
+              viewBox="0 0 28 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.11108 5.74402L0.361084 5.74402L0.361084 7.24402L1.11108 7.24402L1.11108 5.74402ZM27.1487 7.02435C27.4416 6.73146 27.4416 6.25658 27.1487 5.96369L22.3757 1.19072C22.0828 0.897826 21.6079 0.897826 21.315 1.19072C21.0221 1.48361 21.0221 1.95849 21.315 2.25138L25.5577 6.49402L21.315 10.7367C21.0221 11.0296 21.0221 11.5044 21.315 11.7973C21.6079 12.0902 22.0828 12.0902 22.3757 11.7973L27.1487 7.02435ZM1.11108 7.24402L26.6183 7.24402L26.6183 5.74402L1.11108 5.74402L1.11108 7.24402Z" fill="white" />
+            </svg>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {% if section.settings.btn_text != blank %}
+        <div class="mob_button">
+            <div class="hero_banner-btn-svg-wrap cus_button">
+                <h3 class="hero_banner-btn-text cus_btn-text">{{ section.settings.btn_text }}</h3>
+                <div class="hero_banner-arrow-svg arrow-svg">
+                  <svg
+                    width="28"
+                    height="13"  
+                    viewBox="0 0 28 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.11108 5.74402L0.361084 5.74402L0.361084 7.24402L1.11108 7.24402L1.11108 5.74402ZM27.1487 7.02435C27.4416 6.73146 27.4416 6.25658 27.1487 5.96369L22.3757 1.19072C22.0828 0.897826 21.6079 0.897826 21.315 1.19072C21.0221 1.48361 21.0221 1.95849 21.315 2.25138L25.5577 6.49402L21.315 10.7367C21.0221 11.0296 21.0221 11.5044 21.315 11.7973C21.6079 12.0902 22.0828 12.0902 22.3757 11.7973L27.1487 7.02435ZM1.11108 7.24402L26.6183 7.24402L26.6183 5.74402L1.11108 5.74402L1.11108 7.24402Z" fill="white" />
+                  </svg>
+                </div>
+              </div>
+        </div> 
+      {% endif %} 
+    {% if section.settings.sub_title != blank %}
+        <span class="hero_banner-sub-title">{{ section.settings.sub_title }}</span> 
+    {% endif %}
+    {% if section.settings.mob_sub_title != blank %}
+        <span class="hero_banner-sub-title mob_sub-title">{{ section.settings.mob_sub_title }}</span> 
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },  
+      {
+        "type": "richtext",
+        "id": "mob_description",
+        "label": "Mob Description"
+      }, 
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub Title"
+      },
+      {
+        "type": "text",
+        "id": "mob_sub_title",
+        "label": "Mob Sub Title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner"
+      } 
+    ]
+  }
+{% endschema %}

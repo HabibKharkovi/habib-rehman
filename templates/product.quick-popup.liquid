@@ -1,0 +1,101 @@
+{% layout none %}
+
+<div class="product__card">
+    <div class="product__card-content">
+        <div class="product__card-grid">
+            <div class="product__card-grid-item">
+                <div class="product__card-image">
+                    <img src={{ product.featured_image |  image_url: width: '300x' }} alt="{{product.title}}" /> 
+                </div>
+                <div class="product__card-content-wrap">
+                    <h3 class="product__card-title">{{ product.title }}</h3>
+                    <span class="product__card-price">{{ product.price | money }}</span>
+                    <div class="product__card-description">{{ product.description }}</div>
+                </div>
+            </div>
+            <div class="product__card-inner-content">
+                <product-form id="product-form-popup-quick-add">
+                    {%form 'product', product, id: 'product-form-quick-atc', class:"form", data-type: 'add-to-cart-form'%}
+                    <input
+                        type="hidden"
+                        name="id"
+                        value="{{ product.selected_or_first_available_variant.id }}"
+                        {% if product.selected_or_first_available_variant.available == false
+                            or quantity_rule_soldout
+                            or product.selected_or_first_available_variant == nil
+                        %}
+                            disabled
+                        {% endif %}
+                        class="product-variant-id"
+                        >
+                    
+                        <variant-selects id="variant-selects-{{ product.handle }}" data-product-url="{{product.url}}">
+                            {% for option in product.options_with_values %}
+                                {% assign option_name = option.name |  downcase %}
+        
+                                {%- capture input_name -%}
+                                    {{ option.name }}-{{ option.position }}
+                                {%- endcapture -%}
+        
+                                {% if option_name == 'color' %}
+                                    <fieldset class="product-form__input">
+                                    <h3 class="product__card-color-title">{{option.name}}</h3>
+                                    <div class="product__card-variant-wrapper product-form__input">
+                                        {% for value in option.values %}
+                                            <div class="product_card-variant-wrap">
+                                                <input {% if value.selected %}
+                                                    checked
+                                                {% endif %} data-product-url="{{product.url}}" name="{{ input_name }}" type="radio" class="product_card-input hide" id="{{ option.name }}-{{ value }}--{{ option.position }}" data-option-value-id="{{ value.id}}" id="{{product.handle}}-{{ option.name }}-{{ option.position }}" />
+                                                <span class="product__card-variant {{ value | handleize }}"></span>
+                                                <label class="product__card-color" for="{{ option.name }}-{{ value }}--{{ option.position }}" >{{ value }}</label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    </fieldset>
+                                {% endif %}
+                                {% if option_name == "size" %}
+                                    <fieldset class="product-form__input product-form__input product-form__input--dropdown">
+                                    <h3 for="" class="product__card-size">size</h3>
+                                    <div class="product__card-inner-wrap product-form__input select">
+                                        <select class="product__card-select" name="options[{{option.name}}]" id="{{product.handle}}-{{option.name}}">
+                                            {% for value in option.values %}
+                                                <option  {% if value.selected %}
+                                                    selected="selected"
+                                                {% endif %} id="{{product.handle}}-{{ option.name }}-{{ option.position }}-{{value}}"  data-product-url="{{product.url}}" value="{{ value }}" data-option-value-id="{{ value.id }}" >
+                                                    <span>{{ value }}</span>
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                        <div class="product__card-select-arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
+                                                <path d="M2 2L8 8L14 2" stroke="black" stroke-width="1.5" stroke-linecap="square"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    </fieldset>
+                                {% endif %}
+                            {% endfor %}
+                            <script type="application/json" data-selected-variant>{{ product.selected_or_first_available_variant | json }}</script>
+                        </variant-selects>
+                        <button class="product__card-btn-wrap cus_button product-form__submit button" type="submit" name="add" id="ProductSubmitButton-popup">
+                            <span class="cus_btn-text">Add to cart</span>
+                            <div class="product__card-btn-icon arrow-svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="12" viewBox="0 0 36 12" fill="none">
+                                    <path d="M1.4093 5.25L0.659302 5.25L0.659302 6.75L1.4093 6.75L1.4093 5.25ZM35.6391 6.53033C35.932 6.23744 35.932 5.76257 35.6391 5.46967L30.8661 0.696701C30.5733 0.403808 30.0984 0.403808 29.8055 0.696701C29.5126 0.989594 29.5126 1.46447 29.8055 1.75736L34.0481 6L29.8055 10.2426C29.5126 10.5355 29.5126 11.0104 29.8055 11.3033C30.0984 11.5962 30.5732 11.5962 30.8661 11.3033L35.6391 6.53033ZM1.4093 6.75L35.1088 6.75L35.1088 5.25L1.4093 5.25L1.4093 6.75Z" fill="white"/>
+                                </svg>
+                            </div>
+                        </button>
+                    {% endform %}
+                </product-form>
+            </div>
+            <div class="product__card-cross-icon" js-popup-cross-btn>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M5.03784 4.94354L13.5231 13.4288" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                    <path d="M5.03784 13.4285L13.5231 4.94325" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>

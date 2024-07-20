@@ -1,0 +1,119 @@
+{{ 'product-grid.css' | asset_url | stylesheet_tag }}
+{{ "custom-popup.css" | asset_url | stylesheet_tag }}
+
+{% style %}
+    #id-{{ section.id }} .product_grid-btn {
+        left: var(--desktop-left-position);
+        top: var(--desktop-top-position);
+    }
+    @media screen and (max-width: 767px) {
+        #id-{{ section.id }} .product_grid-btn {
+            left: var(--mobile-left-position);
+            top: var(--mobile-top-position);
+        }
+    }
+{% endstyle %}
+
+<div class="product_grid" id="id-{{ section.id }}">
+    <div class="container">
+        {% if section.settings.title != blank %}
+            <h2 class="product_grid-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        <div class="product_grid-row">
+            {% for block in section.blocks %}
+                {% assign product = block.settings.choose_product %}
+                <div class="product_grid-item">
+                    <div class="product_grid-image-wrapper">
+                        <img src="{{ product.featured_image | image_url: width: '600x' }}" alt="{{ product.title }}" class="product_grid-img">
+                    </div>
+                    <span class="product_grid-btn quick-add-to-cart-btn" 
+                        style="--desktop-left-position:{{ block.settings.desktop_position_left_val }}%; --desktop-top-position:{{ block.settings.desktop_position_top_val }}%; --mobile-left-position:{{ block.settings.mobile_position_left_val }}%; --mobile-top-position:{{ block.settings.mobile_position_top_val }}%;" 
+                        js-quick-add-to-cart-btn 
+                        data-product-handle="{{ product.handle }}"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <circle cx="11" cy="11" r="11" fill="#F8F8F8" fill-opacity="0.9"/>
+                            <path d="M11.3457 7.04175V15.5033" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                            <path d="M7.11523 11.2725H15.5768" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="overlay hide" js-quick-atc-overlay></div>
+    <quick-add-to-card class="quick__atc-popup hide"></quick-add-to-card>
+</div>
+
+<script src="{{ 'landing-quick-atc.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+    "name": "Product Grid",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Product",
+            "type": "product",
+            "limit": 6,
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "choose_product",
+                    "label": "Choose product"
+                },
+                {
+                    "type": "range",
+                    "id": "desktop_position_left_val",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Desktop Position (X)",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "desktop_position_top_val",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Desktop Position (Y)",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "mobile_position_left_val",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Mobile Position (X)",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "mobile_position_top_val",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Mobile Position (Y)",
+                    "default": 0
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Grid"
+        }
+    ]
+}
+{% endschema %}

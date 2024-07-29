@@ -28,10 +28,10 @@
           "type": "product",
           "settings": {
             "choose_product": "black-leather-bag",
-            "desktop_position_left_val": 58,
-            "desktop_position_top_val": 55,
-            "mobile_position_left_val": 70,
-            "mobile_position_top_val": 54
+            "desktop_position_left_val": 31,
+            "desktop_position_top_val": 14,
+            "mobile_position_left_val": 82,
+            "mobile_position_top_val": 35
           }
         },
         "product_T8WcjG": {
@@ -74,14 +74,14 @@
             "mobile_position_top_val": 34
           }
         },
-        "product_QEiyTA": {
+        "product_fLfxPm": {
           "type": "product",
           "settings": {
             "choose_product": "dark-denim-top",
-            "desktop_position_left_val": 87,
-            "desktop_position_top_val": 21,
-            "mobile_position_left_val": 79,
-            "mobile_position_top_val": 14
+            "desktop_position_left_val": 50,
+            "desktop_position_top_val": 50,
+            "mobile_position_left_val": 0,
+            "mobile_position_top_val": 0
           }
         }
       },
@@ -91,7 +91,7 @@
         "product_jajzH8",
         "product_kTLemc",
         "product_DgVfgB",
-        "product_QEiyTA"
+        "product_fLfxPm"
       ],
       "settings": {
         "title": "Tisso vison in the wild"
